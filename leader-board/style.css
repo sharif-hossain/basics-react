@@ -1,0 +1,17 @@
+
+body{
+    background-color: #F3F1FF;
+}
+.navbar img{
+    width: 40px;
+}
+.player img{
+    width: 56px;
+}
+main{
+    max-width: 870px; 
+
+}
+.top-player{
+    background-color:#FFFFFF;
+}
