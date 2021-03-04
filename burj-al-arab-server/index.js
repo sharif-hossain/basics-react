@@ -7,7 +7,7 @@ const password = '164211';
 require('dotenv').config()
 console.log(process.env.DB_PASS)
 
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.wwwk6.mongodb.net/burjAlArab?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.wwwk6.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
 var admin = require("firebase-admin");
 
@@ -28,7 +28,7 @@ app.use(cors())
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
-  const collection = client.db("burjAlArab").collection("bookings");
+  const collection = client.db(process.env.DB_NAME).collection("bookings");
 
   app.post('/addBooking', (req, res) =>{
 
@@ -74,4 +74,4 @@ app.get('/', (req, res) => {
   res.send('Hello sharif!')
 })
 
-app.listen(port)
+app.listen(process.env.PORT || port)
